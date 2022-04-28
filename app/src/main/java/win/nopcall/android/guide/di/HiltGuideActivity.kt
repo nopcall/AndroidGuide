@@ -12,7 +12,7 @@ class HiltGuideActivity : AppCompatActivity() {
     val TAG = javaClass.simpleName
 
     @Inject
-    lateinit var engine: Engine
+    lateinit var engine: Dependencies.Engine
 
     // ---------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
