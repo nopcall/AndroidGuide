@@ -8,6 +8,7 @@ import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class Dependencies {
     interface Engine {
@@ -19,6 +20,7 @@ class Dependencies {
         fun run()
     }
 
+    @Singleton
     class DummyEngineImpl @Inject constructor() : Engine {
         override var name: String = "dummy"
         override var size: Int = 99
@@ -72,4 +74,3 @@ class Dependencies {
         }
     }
 }
-

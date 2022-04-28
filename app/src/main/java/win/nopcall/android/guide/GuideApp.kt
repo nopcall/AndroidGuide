@@ -1,11 +1,24 @@
 package win.nopcall.android.guide
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
-import win.nopcall.android.guide.di.Dependencies
-import javax.inject.Inject
+import dagger.Component
+import win.nopcall.android.guide.di.NetServiceModule
+import win.nopcall.android.guide.di.SubcomponentsModule
+import win.nopcall.android.guide.di.TransientComponent
+import javax.inject.Singleton
 
-@HiltAndroidApp
+// Dagger way of DI
+@Singleton
+@Component(modules = [NetServiceModule::class, SubcomponentsModule::class])
+interface ApplicationComponent {
+    fun transientComponent(): TransientComponent.Factory
+}
+
+// @HiltAndroidApp
 class GuideApp: Application() {
-    @Inject lateinit var mEngine: Dependencies.Engine
+    // hilt
+    // @Inject lateinit var mEngine: Dependencies.Engine
+
+    // dagger way of DI
+    val appComponent = DaggerApplicationComponent.create()
 }
